@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mongodb
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mongodb
@@ -30,6 +30,13 @@ spec:
             secretKeyRef:
               name: mongodb-secret
               key: password
+        volumeMounts:
+        - mountPath: /data/db
+          name: backend
+      volumes:
+      - name: backend
+        persistentVolumeClaim:
+          claimName: mongodb
 ---
 apiVersion: v1
 kind: Service

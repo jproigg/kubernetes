@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mongo-express
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: mongo-express
@@ -35,6 +35,13 @@ spec:
             configMapKeyRef:
               name: mongodb-configmap
               key: database_url
+        volumeMounts:
+        - mountPath: /data/db
+          name: frontend
+      volumes:
+      - name: frontend
+        persistentVolumeClaim:
+          claimName: mongo-express
 ---
 apiVersion: v1
 kind: Service
