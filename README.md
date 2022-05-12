@@ -1,5 +1,8 @@
 ## Comandos Kubernetes para aplicacion microservicios mongodb/mongo-express
 
+**Crea el cluster con minikube**
+- minikube start --driver=hyperv
+
 **Crea el configmap**
 - kubectl apply -f mongo-configmap.yml
 
